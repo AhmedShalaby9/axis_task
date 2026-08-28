@@ -1,0 +1,307 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 560" width="940" height="560">
+  <defs>
+    <!-- standard arrowhead -->
+    <marker id="arr" viewBox="0 0 8 8" refX="7" refY="4"
+            markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#475569"/>
+    </marker>
+    <!-- green arrowhead (happy path) -->
+    <marker id="arrGreen" viewBox="0 0 8 8" refX="7" refY="4"
+            markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#22C55E"/>
+    </marker>
+    <!-- red arrowhead (error path) -->
+    <marker id="arrRed" viewBox="0 0 8 8" refX="7" refY="4"
+            markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#EF4444"/>
+    </marker>
+    <!-- amber arrowhead (retry) -->
+    <marker id="arrAmber" viewBox="0 0 8 8" refX="7" refY="4"
+            markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#F59E0B"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="940" height="560" fill="#0D0F14"/>
+
+  <!-- ── Title ─────────────────────────────────────────────── -->
+  <text x="470" y="30" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif"
+        font-size="15" font-weight="700" fill="#CBD5E1" letter-spacing="0.4">
+    RatesListBloc — State Flow
+  </text>
+
+  <!-- ── Section label: happy path ─────────────────────────── -->
+  <text x="20" y="62" font-family="Segoe UI,system-ui,sans-serif"
+        font-size="9" font-weight="600" fill="#334155" letter-spacing="1">HAPPY PATH</text>
+  <line x1="20" y1="66" x2="920" y2="66" stroke="#1E293B" stroke-width="1"/>
+
+  <!-- ════════════════════════════════════════════════════════
+       ROW 1 STATES  (y 78..148)
+  ════════════════════════════════════════════════════════ -->
+
+  <!-- Start dot -->
+  <circle cx="42" cy="113" r="9" fill="#CBD5E1"/>
+
+  <!-- [Idle] ── x 64..194 -->
+  <rect x="64" y="88" width="130" height="50" rx="7"
+        fill="#1A1D24" stroke="#334155" stroke-width="1.5"/>
+  <text x="129" y="108" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif"
+        font-size="10" font-weight="600" fill="#94A3B8">Idle</text>
+  <text x="129" y="124" text-anchor="middle"
+        font-family="Courier New,monospace" font-size="8.5" fill="#475569">status: initial</text>
+  <text x="129" y="137" text-anchor="middle"
+        font-family="Courier New,monospace" font-size="8.5" fill="#475569">rates: []</text>
+
+  <!-- [Initial Loading] ── x 228..428 -->
+  <rect x="228" y="78" width="200" height="60" rx="7"
+        fill="#1A1D24" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="328" y="100" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif"
+        font-size="10" font-weight="600" fill="#60A5FA">Initial Loading</text>
+  <text x="328" y="116" text-anchor="middle"
+        font-family="Courier New,monospace" font-size="8.5" fill="#93C5FD">isInitialLoading = true</text>
+  <text x="328" y="130" text-anchor="middle"
+        font-family="Courier New,monospace" font-size="8.5" fill="#475569">shimmer cards shown</text>
+
+  <!-- [Success] ── x 462..632 -->
+  <rect x="462" y="78" width="170" height="60" rx="7"
+        fill="#0C1F13" stroke="#22C55E" stroke-width="1.5"/>
+  <text x="547" y="100" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif"
+        font-size="10" font-weight="600" fill="#4ADE80">Success</text>
+  <text x="547" y="116" text-anchor="middle"
+        font-family="Courier New,monospace" font-size="8.5" fill="#86EFAC">rates populated</text>
+  <text x="547" y="130" text-anchor="middle"
+        font-family="Courier New,monospace" font-size="8.5" fill="#475569">badges · offline banner</text>
+
+  <!-- [Refreshing] ── x 666..876 -->
+  <rect x="666" y="78" width="210" height="60" rx="7"
+        fill="#1A1D24" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="771" y="100" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif"
+        font-size="10" font-weight="600" fill="#60A5FA">Refreshing</text>
+  <text x="771" y="116" text-anchor="middle"
+        font-family="Courier New,monospace" font-size="8.5" fill="#93C5FD">isRefreshing = true</text>
+  <text x="771" y="130" text-anchor="middle"
+        font-family="Courier New,monospace" font-size="8.5" fill="#475569">rates visible · spinner</text>
+
+  <!-- ── Arrows: Row 1 ─────────────────────────────────────── -->
+
+  <!-- dot → Idle -->
+  <line x1="51" y1="113" x2="62" y2="113"
+        stroke="#CBD5E1" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <!-- Idle → InitialLoading -->
+  <line x1="194" y1="113" x2="226" y2="113"
+        stroke="#22C55E" stroke-width="1.5" marker-end="url(#arrGreen)"/>
+  <text x="210" y="107" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif" font-size="8" fill="#22C55E">RatesRequested</text>
+
+  <!-- InitialLoading → Success -->
+  <line x1="428" y1="108" x2="460" y2="108"
+        stroke="#22C55E" stroke-width="1.5" marker-end="url(#arrGreen)"/>
+  <text x="444" y="102" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif" font-size="8" fill="#22C55E">Right(rates)</text>
+
+  <!-- Success → Refreshing -->
+  <line x1="632" y1="108" x2="664" y2="108"
+        stroke="#22C55E" stroke-width="1.5" marker-end="url(#arrGreen)"/>
+  <text x="648" y="100" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif" font-size="8" fill="#22C55E">RatesRefreshed</text>
+  <text x="648" y="111" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif" font-size="8" fill="#22C55E">ConnRestored *</text>
+
+  <!-- Refreshing → Success (curved arc above, success on right update) -->
+  <path d="M771,78 C771,44 547,44 547,78"
+        stroke="#22C55E" stroke-width="1.5" fill="none" marker-end="url(#arrGreen)"/>
+  <text x="659" y="38" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif" font-size="8" fill="#22C55E">Right(rates) — update</text>
+
+  <!-- ── Section label: error paths ───────────────────────── -->
+  <text x="20" y="178" font-family="Segoe UI,system-ui,sans-serif"
+        font-size="9" font-weight="600" fill="#334155" letter-spacing="1">ERROR PATHS</text>
+  <line x1="20" y1="182" x2="920" y2="182" stroke="#1E293B" stroke-width="1"/>
+
+  <!-- ════════════════════════════════════════════════════════
+       ROW 2 STATES  (y 192..262)
+  ════════════════════════════════════════════════════════ -->
+
+  <!-- [Hard Failure] ── x 228..448 -->
+  <rect x="228" y="196" width="220" height="60" rx="7"
+        fill="#1F0D0D" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="338" y="218" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif"
+        font-size="10" font-weight="600" fill="#F87171">Hard Failure</text>
+  <text x="338" y="234" text-anchor="middle"
+        font-family="Courier New,monospace" font-size="8.5" fill="#FCA5A5">rates still empty</text>
+  <text x="338" y="248" text-anchor="middle"
+        font-family="Courier New,monospace" font-size="8.5" fill="#475569">full error screen shown</text>
+
+  <!-- [Soft Failure] ── x 666..876 -->
+  <rect x="666" y="196" width="210" height="60" rx="7"
+        fill="#1C1408" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="771" y="218" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif"
+        font-size="10" font-weight="600" fill="#FCD34D">Soft Failure</text>
+  <text x="771" y="234" text-anchor="middle"
+        font-family="Courier New,monospace" font-size="8.5" fill="#FDE68A">rates preserved</text>
+  <text x="771" y="248" text-anchor="middle"
+        font-family="Courier New,monospace" font-size="8.5" fill="#475569">SnackBar shown</text>
+
+  <!-- ── Arrows: error paths ───────────────────────────────── -->
+
+  <!-- InitialLoading → HardFailure (down) -->
+  <line x1="328" y1="138" x2="328" y2="194"
+        stroke="#EF4444" stroke-width="1.5" marker-end="url(#arrRed)"/>
+  <text x="336" y="170" font-family="Segoe UI,system-ui,sans-serif" font-size="8" fill="#EF4444">Left(failure)</text>
+
+  <!-- HardFailure → InitialLoading (curved retry, left side) -->
+  <path d="M228,226 C178,226 178,108 228,108"
+        stroke="#F59E0B" stroke-width="1.5" fill="none" stroke-dasharray="4,2"
+        marker-end="url(#arrAmber)"/>
+  <text x="156" y="172" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif" font-size="8" fill="#F59E0B">RatesRequested</text>
+  <text x="156" y="183" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif" font-size="8" fill="#F59E0B">(retry)</text>
+
+  <!-- Refreshing → SoftFailure (down) -->
+  <line x1="771" y1="138" x2="771" y2="194"
+        stroke="#EF4444" stroke-width="1.5" marker-end="url(#arrRed)"/>
+  <text x="779" y="170" font-family="Segoe UI,system-ui,sans-serif" font-size="8" fill="#EF4444">Left(failure)</text>
+
+  <!-- SoftFailure → Refreshing (curved retry, right side) -->
+  <path d="M876,226 C916,226 916,108 876,108"
+        stroke="#F59E0B" stroke-width="1.5" fill="none" stroke-dasharray="4,2"
+        marker-end="url(#arrAmber)"/>
+  <text x="920" y="172" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif" font-size="8" fill="#F59E0B">RatesRefreshed</text>
+  <text x="920" y="183" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif" font-size="8" fill="#F59E0B">(retry)</text>
+
+  <!-- ════════════════════════════════════════════════════════
+       CurrencyDetailBloc  (bottom section)
+  ════════════════════════════════════════════════════════ -->
+  <line x1="20" y1="296" x2="920" y2="296" stroke="#1E293B" stroke-width="1"/>
+  <text x="20" y="290" font-family="Segoe UI,system-ui,sans-serif"
+        font-size="9" font-weight="600" fill="#334155" letter-spacing="1">CURRENCYDETAILBLOC</text>
+
+  <!-- Start dot -->
+  <circle cx="42" cy="350" r="8" fill="#CBD5E1"/>
+
+  <!-- [Detail Idle] -->
+  <rect x="64" y="326" width="160" height="50" rx="7"
+        fill="#1A1D24" stroke="#334155" stroke-width="1.5"/>
+  <text x="144" y="346" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif"
+        font-size="10" font-weight="600" fill="#94A3B8">Detail Idle</text>
+  <text x="144" y="362" text-anchor="middle"
+        font-family="Courier New,monospace" font-size="8.5" fill="#475569">rate known at creation</text>
+  <text x="144" y="375" text-anchor="middle"
+        font-family="Courier New,monospace" font-size="8.5" fill="#475569">header visible</text>
+
+  <!-- [Chart Loading] -->
+  <rect x="280" y="326" width="180" height="50" rx="7"
+        fill="#1A1D24" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="370" y="346" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif"
+        font-size="10" font-weight="600" fill="#60A5FA">Chart Loading</text>
+  <text x="370" y="362" text-anchor="middle"
+        font-family="Courier New,monospace" font-size="8.5" fill="#93C5FD">chart shimmer</text>
+  <text x="370" y="375" text-anchor="middle"
+        font-family="Courier New,monospace" font-size="8.5" fill="#475569">7 parallel getRatesForDate</text>
+
+  <!-- [Chart Success] -->
+  <rect x="516" y="326" width="180" height="50" rx="7"
+        fill="#0C1F13" stroke="#22C55E" stroke-width="1.5"/>
+  <text x="606" y="346" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif"
+        font-size="10" font-weight="600" fill="#4ADE80">Chart Success</text>
+  <text x="606" y="362" text-anchor="middle"
+        font-family="Courier New,monospace" font-size="8.5" fill="#86EFAC">LineChart rendered</text>
+  <text x="606" y="375" text-anchor="middle"
+        font-family="Courier New,monospace" font-size="8.5" fill="#475569">partial points ok</text>
+
+  <!-- [Chart Failure] -->
+  <rect x="752" y="326" width="168" height="50" rx="7"
+        fill="#1F0D0D" stroke="#EF4444" stroke-width="1.5"/>
+  <text x="836" y="346" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif"
+        font-size="10" font-weight="600" fill="#F87171">Chart Failure</text>
+  <text x="836" y="362" text-anchor="middle"
+        font-family="Courier New,monospace" font-size="8.5" fill="#FCA5A5">all 7 days failed</text>
+  <text x="836" y="375" text-anchor="middle"
+        font-family="Courier New,monospace" font-size="8.5" fill="#475569">error message shown</text>
+
+  <!-- Arrows: CurrencyDetailBloc -->
+  <line x1="50" y1="350" x2="62" y2="350"
+        stroke="#CBD5E1" stroke-width="1.5" marker-end="url(#arr)"/>
+
+  <line x1="224" y1="350" x2="278" y2="350"
+        stroke="#22C55E" stroke-width="1.5" marker-end="url(#arrGreen)"/>
+  <text x="251" y="344" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif" font-size="8" fill="#22C55E">HistoryRequested</text>
+
+  <line x1="460" y1="350" x2="514" y2="350"
+        stroke="#22C55E" stroke-width="1.5" marker-end="url(#arrGreen)"/>
+  <text x="487" y="344" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif" font-size="8" fill="#22C55E">Right(history)</text>
+
+  <line x1="460" y1="365" x2="514" y2="365" stroke="none"/>
+  <line x1="460" y1="360" x2="750" y2="360"
+        stroke="#EF4444" stroke-width="1.5" fill="none"/>
+  <!-- direct line from chart loading bottom to chart failure -->
+  <line x1="460" y1="360" x2="460" y2="385"
+        stroke="none"/>
+
+  <!-- ChartLoading → ChartFailure (arc below) -->
+  <path d="M370,376 C370,410 836,410 836,376"
+        stroke="#EF4444" stroke-width="1.5" fill="none" marker-end="url(#arrRed)"/>
+  <text x="603" y="418" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif" font-size="8" fill="#EF4444">Left(failure) — all 7 days fail</text>
+
+  <!-- ChartFailure → ChartLoading (retry, curved above) -->
+  <path d="M836,326 C836,300 370,300 370,326"
+        stroke="#F59E0B" stroke-width="1.5" fill="none" stroke-dasharray="4,2"
+        marker-end="url(#arrAmber)"/>
+  <text x="603" y="295" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif" font-size="8" fill="#F59E0B">HistoryRequested (retry)</text>
+
+  <!-- ════════════════════════════════════════════════════════
+       Legend
+  ════════════════════════════════════════════════════════ -->
+  <rect x="20" y="456" width="900" height="90" rx="6" fill="#111318" stroke="#1E293B" stroke-width="1"/>
+  <text x="36" y="474" font-family="Segoe UI,system-ui,sans-serif" font-size="9" font-weight="600" fill="#475569" letter-spacing="1">LEGEND</text>
+
+  <!-- green line -->
+  <line x1="36" y1="491" x2="76" y2="491" stroke="#22C55E" stroke-width="1.5" marker-end="url(#arrGreen)"/>
+  <text x="82" y="495" font-family="Segoe UI,system-ui,sans-serif" font-size="8.5" fill="#94A3B8">Happy path (Right)</text>
+
+  <!-- red line -->
+  <line x1="36" y1="511" x2="76" y2="511" stroke="#EF4444" stroke-width="1.5" marker-end="url(#arrRed)"/>
+  <text x="82" y="515" font-family="Segoe UI,system-ui,sans-serif" font-size="8.5" fill="#94A3B8">Error path (Left)</text>
+
+  <!-- amber dashed line -->
+  <line x1="36" y1="531" x2="76" y2="531" stroke="#F59E0B" stroke-width="1.5" stroke-dasharray="4,2" marker-end="url(#arrAmber)"/>
+  <text x="82" y="535" font-family="Segoe UI,system-ui,sans-serif" font-size="8.5" fill="#94A3B8">Retry event</text>
+
+  <!-- note about ConnRestored -->
+  <text x="260" y="480" font-family="Segoe UI,system-ui,sans-serif" font-size="8.5" font-weight="600" fill="#60A5FA">* ConnRestored</text>
+  <text x="260" y="494" font-family="Segoe UI,system-ui,sans-serif" font-size="8.5" fill="#64748B">Fires only on false → true edge.</text>
+  <text x="260" y="507" font-family="Segoe UI,system-ui,sans-serif" font-size="8.5" fill="#64748B">null → true (first emit) is ignored.</text>
+  <text x="260" y="520" font-family="Segoe UI,system-ui,sans-serif" font-size="8.5" fill="#64748B">true → true is ignored.</text>
+
+  <!-- DataOrigin note -->
+  <text x="560" y="480" font-family="Segoe UI,system-ui,sans-serif" font-size="8.5" font-weight="600" fill="#A78BFA">DataOrigin</text>
+  <text x="560" y="494" font-family="Segoe UI,system-ui,sans-serif" font-size="8.5" fill="#64748B">Stamped in RepositoryImpl, carried</text>
+  <text x="560" y="507" font-family="Segoe UI,system-ui,sans-serif" font-size="8.5" fill="#64748B">through entities to UI. Any cache</text>
+  <text x="560" y="520" font-family="Segoe UI,system-ui,sans-serif" font-size="8.5" fill="#64748B">point taints the whole history.</text>
+
+  <!-- isRefreshing note -->
+  <text x="770" y="480" font-family="Segoe UI,system-ui,sans-serif" font-size="8.5" font-weight="600" fill="#60A5FA">Refresh vs Initial</text>
+  <text x="770" y="494" font-family="Segoe UI,system-ui,sans-serif" font-size="8.5" fill="#64748B">isInitialLoading: loading + empty</text>
+  <text x="770" y="507" font-family="Segoe UI,system-ui,sans-serif" font-size="8.5" fill="#64748B">isRefreshing: loading + has rates</text>
+  <text x="770" y="520" font-family="Segoe UI,system-ui,sans-serif" font-size="8.5" fill="#64748B">Both use same status=loading.</text>
+</svg>

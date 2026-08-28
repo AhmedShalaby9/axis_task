@@ -31,6 +31,26 @@ lib/
             └── pages/  # RatesListPage, CurrencyDetailPage
 ```
 
+## Diagrams
+
+Visual references for the architecture and runtime behavior. Sources live under [`docs/`](docs/).
+
+### Project Structure
+
+High-level map of the feature-based layout — `core/`, `features/`, and the clean-architecture layers within each.
+
+![Project Structure](docs/project_structure.svg)
+
+---
+
+### State Flow
+
+End-to-end BLoC state transitions: initial load → success → refresh → error and retry paths. Covers both `RatesListBloc` (main screen) and `CurrencyDetailBloc` (history chart screen).
+
+![State Flow](docs/state_flow.svg)
+
+---
+
 ## Tech Stack
 
 | Concern | Package |

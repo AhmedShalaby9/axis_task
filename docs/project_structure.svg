@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 550" width="900" height="550">
+  <defs>
+    <marker id="arr" viewBox="0 0 8 8" refX="7" refY="4"
+            markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#475569"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="900" height="550" fill="#0D0F14"/>
+
+  <!-- Title -->
+  <text x="375" y="34" text-anchor="middle"
+        font-family="Segoe UI,system-ui,sans-serif"
+        font-size="15" font-weight="700" fill="#CBD5E1" letter-spacing="0.4">
+    Clean Architecture · axis_task
+  </text>
+
+  <!-- ═══════════════════════════════════════════════════════
+       PRESENTATION  y 52..198
+  ═══════════════════════════════════════════════════════ -->
+  <rect x="20" y="52" width="682" height="146" rx="8"
+        fill="#0B1524" stroke="#3B82F6" stroke-width="1.5"/>
+  <text x="34" y="71" font-family="Segoe UI,system-ui,sans-serif"
+        font-size="10" font-weight="700" fill="#3B82F6" letter-spacing="2">PRESENTATION</text>
+
+  <!-- BLoC -->
+  <rect x="32" y="80" width="200" height="106" rx="5" fill="#132034" stroke="#1D3557" stroke-width="1"/>
+  <text x="132" y="98" text-anchor="middle" font-family="Segoe UI,system-ui,sans-serif"
+        font-size="9.5" font-weight="600" fill="#60A5FA">BLoC</text>
+  <text x="132" y="114" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#93C5FD">RatesListBloc</text>
+  <text x="132" y="129" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#93C5FD">CurrencyDetailBloc</text>
+  <text x="132" y="144" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#64748B">State · Event · Status</text>
+  <text x="132" y="159" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#475569">connectivityStream sub</text>
+  <text x="132" y="174" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#475569">registerFactoryParam (DI)</text>
+
+  <!-- Pages -->
+  <rect x="244" y="80" width="188" height="106" rx="5" fill="#132034" stroke="#1D3557" stroke-width="1"/>
+  <text x="338" y="98" text-anchor="middle" font-family="Segoe UI,system-ui,sans-serif"
+        font-size="9.5" font-weight="600" fill="#60A5FA">Pages</text>
+  <text x="338" y="114" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#93C5FD">RatesListPage</text>
+  <text x="338" y="129" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#93C5FD">CurrencyDetailPage</text>
+  <text x="338" y="144" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#64748B">BlocConsumer / Builder</text>
+  <text x="338" y="159" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#475569">RefreshIndicator</text>
+  <text x="338" y="174" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#475569">offline amber banner</text>
+
+  <!-- Widgets -->
+  <rect x="444" y="80" width="244" height="106" rx="5" fill="#132034" stroke="#1D3557" stroke-width="1"/>
+  <text x="566" y="98" text-anchor="middle" font-family="Segoe UI,system-ui,sans-serif"
+        font-size="9.5" font-weight="600" fill="#60A5FA">Widgets</text>
+  <text x="566" y="114" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#93C5FD">RateCard · ChangeBadge</text>
+  <text x="566" y="129" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#93C5FD">SevenDayChart</text>
+  <text x="566" y="144" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#64748B">ShimmerCard (shimmer)</text>
+  <text x="566" y="159" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#475569">tabular figures · fl_chart</text>
+  <text x="566" y="174" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#475569">EGP arrow label · dp precision</text>
+
+  <!-- arrow down -->
+  <line x1="362" y1="198" x2="362" y2="226" stroke="#334155" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="370" y="215" font-family="Segoe UI,system-ui,sans-serif" font-size="9" fill="#475569">depends on</text>
+
+  <!-- ═══════════════════════════════════════════════════════
+       DOMAIN  y 228..374
+  ═══════════════════════════════════════════════════════ -->
+  <rect x="20" y="228" width="682" height="146" rx="8"
+        fill="#100E20" stroke="#8B5CF6" stroke-width="1.5"/>
+  <text x="34" y="247" font-family="Segoe UI,system-ui,sans-serif"
+        font-size="10" font-weight="700" fill="#8B5CF6" letter-spacing="2">DOMAIN</text>
+
+  <!-- Entities -->
+  <rect x="32" y="256" width="200" height="106" rx="5" fill="#1A1430" stroke="#2D1F50" stroke-width="1"/>
+  <text x="132" y="274" text-anchor="middle" font-family="Segoe UI,system-ui,sans-serif"
+        font-size="9.5" font-weight="600" fill="#A78BFA">Entities</text>
+  <text x="132" y="290" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#C4B5FD">ExchangeRate</text>
+  <text x="132" y="305" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#C4B5FD">RateHistory · RatePoint</text>
+  <text x="132" y="320" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#7C6FAE">EgpTrend (enum)</text>
+  <text x="132" y="335" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#475569">DataOrigin (enum)</text>
+  <text x="132" y="350" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#475569">Equatable · copyWith</text>
+
+  <!-- Repository contract -->
+  <rect x="244" y="256" width="188" height="106" rx="5" fill="#1A1430" stroke="#2D1F50" stroke-width="1"/>
+  <text x="338" y="274" text-anchor="middle" font-family="Segoe UI,system-ui,sans-serif"
+        font-size="9.5" font-weight="600" fill="#A78BFA">Repository Contract</text>
+  <text x="338" y="290" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#C4B5FD">CurrencyRepository</text>
+  <text x="338" y="305" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#7C6FAE">getRatesForDate(DateTime)</text>
+  <text x="338" y="320" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#7C6FAE">getRateHistory(code, days)</text>
+  <text x="338" y="335" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#475569">Either&lt;Failure, T&gt;</text>
+  <text x="338" y="350" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#475569">no Flutter / http imports</text>
+
+  <!-- Use Cases -->
+  <rect x="444" y="256" width="244" height="106" rx="5" fill="#1A1430" stroke="#2D1F50" stroke-width="1"/>
+  <text x="566" y="274" text-anchor="middle" font-family="Segoe UI,system-ui,sans-serif"
+        font-size="9.5" font-weight="600" fill="#A78BFA">Use Cases</text>
+  <text x="566" y="290" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#C4B5FD">GetAllRatesWithChange</text>
+  <text x="566" y="305" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#C4B5FD">GetRateHistory</text>
+  <text x="566" y="320" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#7C6FAE">exactly 2 repo calls</text>
+  <text x="566" y="335" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#475569">delta · EgpTrend calc</text>
+  <text x="566" y="350" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#475569">partial-success history</text>
+
+  <!-- arrow up -->
+  <line x1="362" y1="402" x2="362" y2="376" stroke="#334155" stroke-width="1.5" marker-end="url(#arr)"/>
+  <text x="370" y="394" font-family="Segoe UI,system-ui,sans-serif" font-size="9" fill="#475569">implements</text>
+
+  <!-- ═══════════════════════════════════════════════════════
+       DATA  y 404..550
+  ═══════════════════════════════════════════════════════ -->
+  <rect x="20" y="404" width="682" height="134" rx="8"
+        fill="#14100A" stroke="#F59E0B" stroke-width="1.5"/>
+  <text x="34" y="423" font-family="Segoe UI,system-ui,sans-serif"
+        font-size="10" font-weight="700" fill="#F59E0B" letter-spacing="2">DATA</text>
+
+  <!-- Remote datasource -->
+  <rect x="32" y="432" width="200" height="94" rx="5" fill="#1C1709" stroke="#3B2900" stroke-width="1"/>
+  <text x="132" y="449" text-anchor="middle" font-family="Segoe UI,system-ui,sans-serif"
+        font-size="9.5" font-weight="600" fill="#FCD34D">Remote Datasource</text>
+  <text x="132" y="465" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#FDE68A">http.Client · 10 s timeout</text>
+  <text x="132" y="480" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#FDE68A">currency-api.pages.dev</text>
+  <text x="132" y="495" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#92772A">Socket/Timeout → NetworkEx</text>
+  <text x="132" y="510" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#475569">non-200 → ServerEx(code)</text>
+
+  <!-- Local datasource -->
+  <rect x="244" y="432" width="188" height="94" rx="5" fill="#1C1709" stroke="#3B2900" stroke-width="1"/>
+  <text x="338" y="449" text-anchor="middle" font-family="Segoe UI,system-ui,sans-serif"
+        font-size="9.5" font-weight="600" fill="#FCD34D">Local Datasource</text>
+  <text x="338" y="465" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#FDE68A">SharedPreferences</text>
+  <text x="338" y="480" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#FDE68A">key: rates_YYYY-MM-DD</text>
+  <text x="338" y="495" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#92772A">→ CurrencyRateModel</text>
+  <text x="338" y="510" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#475569">corrupt JSON → CacheEx</text>
+
+  <!-- Repository impl -->
+  <rect x="444" y="432" width="244" height="94" rx="5" fill="#1C1709" stroke="#3B2900" stroke-width="1"/>
+  <text x="566" y="449" text-anchor="middle" font-family="Segoe UI,system-ui,sans-serif"
+        font-size="9.5" font-weight="600" fill="#FCD34D">Repository Impl</text>
+  <text x="566" y="465" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#FDE68A">rate inversion: 1 / rawRate</text>
+  <text x="566" y="480" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#FDE68A">network → cache fallback</text>
+  <text x="566" y="495" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#92772A">→ Either&lt;Failure, Entity&gt;</text>
+  <text x="566" y="510" text-anchor="middle" font-family="Courier New,monospace" font-size="9" fill="#475569">DataOrigin stamped here</text>
+
+  <!-- ═══════════════════════════════════════════════════════
+       CORE  right vertical strip
+  ═══════════════════════════════════════════════════════ -->
+  <rect x="720" y="52" width="160" height="486" rx="8"
+        fill="#09130D" stroke="#22C55E" stroke-width="1.5"/>
+  <text x="800" y="72" text-anchor="middle" font-family="Segoe UI,system-ui,sans-serif"
+        font-size="10" font-weight="700" fill="#22C55E" letter-spacing="2">CORE</text>
+
+  <text x="800" y="92" text-anchor="middle" font-family="Segoe UI,system-ui,sans-serif" font-size="9" font-weight="600" fill="#86EFAC">Network</text>
+  <text x="800" y="107" text-anchor="middle" font-family="Courier New,monospace" font-size="8.5" fill="#4ADE80">NetworkInfo</text>
+  <text x="800" y="121" text-anchor="middle" font-family="Courier New,monospace" font-size="8.5" fill="#166534">isConnected</text>
+  <text x="800" y="135" text-anchor="middle" font-family="Courier New,monospace" font-size="8.5" fill="#166534">connectivityStream</text>
+
+  <line x1="730" y1="147" x2="870" y2="147" stroke="#14261A" stroke-width="1"/>
+
+  <text x="800" y="162" text-anchor="middle" font-family="Segoe UI,system-ui,sans-serif" font-size="9" font-weight="600" fill="#86EFAC">Errors</text>
+  <text x="800" y="177" text-anchor="middle" font-family="Courier New,monospace" font-size="8.5" fill="#4ADE80">Failures (sealed)</text>
+  <text x="800" y="191" text-anchor="middle" font-family="Courier New,monospace" font-size="8.5" fill="#4ADE80">Exceptions (sealed)</text>
+  <text x="800" y="205" text-anchor="middle" font-family="Courier New,monospace" font-size="8.5" fill="#166534">Network · Server</text>
+  <text x="800" y="219" text-anchor="middle" font-family="Courier New,monospace" font-size="8.5" fill="#166534">Cache · Parsing</text>
+
+  <line x1="730" y1="231" x2="870" y2="231" stroke="#14261A" stroke-width="1"/>
+
+  <text x="800" y="246" text-anchor="middle" font-family="Segoe UI,system-ui,sans-serif" font-size="9" font-weight="600" fill="#86EFAC">DI</text>
+  <text x="800" y="261" text-anchor="middle" font-family="Courier New,monospace" font-size="8.5" fill="#4ADE80">GetIt (sl)</text>
+  <text x="800" y="275" text-anchor="middle" font-family="Courier New,monospace" font-size="8.5" fill="#166534">network_module</text>
+  <text x="800" y="289" text-anchor="middle" font-family="Courier New,monospace" font-size="8.5" fill="#166534">currency_module</text>
+
+  <line x1="730" y1="301" x2="870" y2="301" stroke="#14261A" stroke-width="1"/>
+
+  <text x="800" y="316" text-anchor="middle" font-family="Segoe UI,system-ui,sans-serif" font-size="9" font-weight="600" fill="#86EFAC">Theme</text>
+  <text x="800" y="331" text-anchor="middle" font-family="Courier New,monospace" font-size="8.5" fill="#4ADE80">AppTheme.dark</text>
+  <text x="800" y="345" text-anchor="middle" font-family="Courier New,monospace" font-size="8.5" fill="#166534">#22C55E · #EF4444</text>
+  <text x="800" y="359" text-anchor="middle" font-family="Courier New,monospace" font-size="8.5" fill="#166534">tabular figures</text>
+
+  <line x1="730" y1="371" x2="870" y2="371" stroke="#14261A" stroke-width="1"/>
+
+  <text x="800" y="386" text-anchor="middle" font-family="Segoe UI,system-ui,sans-serif" font-size="9" font-weight="600" fill="#86EFAC">Constants</text>
+  <text x="800" y="401" text-anchor="middle" font-family="Courier New,monospace" font-size="8.5" fill="#4ADE80">targetCurrencies</text>
+  <text x="800" y="415" text-anchor="middle" font-family="Courier New,monospace" font-size="8.5" fill="#4ADE80">currencyNames</text>
+  <text x="800" y="429" text-anchor="middle" font-family="Courier New,monospace" font-size="8.5" fill="#166534">ratesUrl(DateTime)</text>
+
+  <line x1="730" y1="441" x2="870" y2="441" stroke="#14261A" stroke-width="1"/>
+
+  <text x="800" y="456" text-anchor="middle" font-family="Segoe UI,system-ui,sans-serif" font-size="9" font-weight="600" fill="#86EFAC">UseCase</text>
+  <text x="800" y="471" text-anchor="middle" font-family="Courier New,monospace" font-size="8.5" fill="#4ADE80">UseCase&lt;T, P&gt;</text>
+  <text x="800" y="485" text-anchor="middle" font-family="Courier New,monospace" font-size="8.5" fill="#166534">call(Params params)</text>
+  <text x="800" y="499" text-anchor="middle" font-family="Courier New,monospace" font-size="8.5" fill="#166534">NoParams</text>
+
+  <!-- dependency rule note -->
+  <rect x="721" y="516" width="158" height="16" rx="4" fill="#0D1F12"/>
+  <text x="800" y="527" text-anchor="middle" font-family="Segoe UI,system-ui,sans-serif"
+        font-size="8" fill="#22C55E">outer depends on inner only</text>
+</svg>
