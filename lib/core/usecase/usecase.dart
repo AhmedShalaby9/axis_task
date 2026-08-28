@@ -7,8 +7,8 @@ import '../error/failures.dart';
 ///
 /// [Type] is the success value.
 /// [Params] is the input; use [NoParams] for use cases that need no arguments.
-abstract interface class UseCase<Type, Params> {
-  Future<Either<Failure, Type>> call(Params params);
+abstract interface class UseCase<T, Params> {
+  Future<Either<Failure, T>> call(Params params);
 }
 
 /// Passed to [UseCase.call] when a use case requires no input.

@@ -1,6 +1,6 @@
 import 'package:equatable/equatable.dart';
 
-/// Returned by repositories via Either<Failure, T>.
+/// Returned by repositories via `Either<Failure, T>`.
 /// Never thrown — it is a value, not an exception.
 sealed class Failure extends Equatable {
   const Failure(this.message);
