@@ -162,3 +162,48 @@ badge for it instead of showing a zero.
 The fix it produced was better than what I'd have written: it made the
 yesterday map nullable, so a total request failure and a single missing
 currency collapse into the same null check rather than two branches.
+
+
+---
+
+##  Data layer
+
+**Prompt**
+
+> Implement the data layer. [model, remote/local datasources, repository impl]
+> No inversion in the datasource — it represents the API faithfully.
+> Question before you write it: for getRateHistory, if 2 of the 7 days fail,
+> what should happen? Tell me your answer first, then implement.
+
+**Returned**
+
+Model filtering to the 5 targets at parse time, injected `http.Client`,
+date-keyed `shared_preferences` cache, and a repository doing inversion at
+mapping time with cache fallback. For the history question it chose partial
+success — render whatever days resolved, fail only if all 7 fail.
+
+**Decision:** Accepted ✅
+
+**Why**
+
+Asking it to answer the partial-failure question *before* implementing was
+deliberate — I wanted the reasoning separately from the code so I could
+disagree with the decision rather than reverse-engineer it from a diff. Its
+answer matched mine: a 5-point chart is still useful, and one bad date
+shouldn't blank the screen.
+
+Two things I challenged and it defended correctly:
+
+- It used `Future.wait` for the 7 history calls, and `Future.wait` discards
+  remaining futures on first throw — which would contradict partial success.
+  It showed that `getRatesForDate` catches all four exception types and
+  returns `Either`, so the futures always complete normally and nothing is
+  discarded. My concern was wrong; I'd have written the same check again.
+- On a 500 while online it serves cached rates rather than failing, and when
+  both remote and cache fail it surfaces the *remote* failure, not the cache
+  miss. "Server returned 500" is more actionable to a user than "no cached
+  data".
+
+Also worth noting: it injected `http.Client` rather than constructing it
+internally, which I hadn't asked for. That's what makes the datasource
+testable without a live network.
