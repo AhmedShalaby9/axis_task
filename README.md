@@ -5,6 +5,9 @@ A Flutter currency exchange tracker displaying live EGP exchange rates against 5
 ## Screenshot
 
 ![Rates List](screenshots/rates_list.png)
+![Rates List Offline](screenshots/rates_list_offline.png)
+![details screen](screenshots/details.png)
+
 
 > Dark theme · Offline mode shows amber banner with cached data date · EGP trend badges (green = EGP strengthened, red = EGP weakened)
 
