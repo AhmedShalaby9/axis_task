@@ -90,3 +90,36 @@ proper layering, sensible naming — but the problems were all in the parts
 the spec constrains and a generic clean-architecture template doesn't:
 request count, timestamps, and an inverted color convention. Structure
 that reads well isn't the same as structure that fits the requirements.
+
+
+
+---
+
+## 2026-08-28 — Core layer
+
+**Prompt**
+
+> Implement the core layer only. No feature code yet. [six files listed]
+> IMPORTANT: the date is a SUBDOMAIN, not a path segment.
+> [verified API response shape pasted in]
+
+**Returned**
+
+Sealed `AppException` / `Failure` hierarchies, `NetworkInfo` with both a
+one-shot check and a stream, `AppConstants` with a date-to-URL builder,
+`UseCase` base, `DataOrigin` enum. Added equatable, dartz, connectivity_plus.
+
+**Decision:** Accepted
+
+**Why**
+
+I gave it the verified API response and the subdomain constraint up front
+rather than letting it infer the URL shape — the date-as-subdomain pattern
+is unusual enough that it would likely have produced a path segment.
+
+It used `sealed` classes for both hierarchies, which I hadn't asked for but
+kept: it makes the compiler enforce exhaustive handling of every failure
+case in the presentation layer. It also handled `connectivity_plus` v6
+correctly — that version returns `List<ConnectivityResult>` rather than a
+single value, and a naive `!= ConnectivityResult.none` check would not have
+compiled.
