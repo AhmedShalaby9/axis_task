@@ -6,6 +6,15 @@ abstract final class AppConstants {
   /// The 5 target currencies, lowercase — matches API response keys exactly.
   static const List<String> targetCurrencies = ['usd', 'eur', 'gbp', 'sar', 'jpy'];
 
+  /// Human-readable display names keyed by uppercase ISO 4217 code.
+  static const Map<String, String> currencyNames = {
+    'USD': 'US Dollar',
+    'EUR': 'Euro',
+    'GBP': 'British Pound',
+    'SAR': 'Saudi Riyal',
+    'JPY': 'Japanese Yen',
+  };
+
   // ── URL construction ───────────────────────────────────────────────────────
   //
   // The date is a SUBDOMAIN, not a path segment:
