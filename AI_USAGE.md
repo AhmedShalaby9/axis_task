@@ -250,3 +250,49 @@ One detail I'd have been likely to miss: `_previousConnectivity` starts null,
 so the connectivity stream's first emission is never treated as a
 restoration. Without that, entering the app offline-then-online would fire a
 spurious refresh on launch.
+
+
+---
+
+##  UI
+
+**Prompt**
+
+> [Dark theme spec with exact hex values, card layout, offline banner,
+> shimmer-not-spinner for both loading states, fl_chart with gradient fill,
+> and the state-to-UI mapping for each of the four status/hasRates combinations]
+
+**Returned**
+
+Both screens, theme, shimmer placeholders, and the chart. Tabular figures on
+every number so digits don't shift on refresh, and shimmer cards matched to
+the real card height so the layout doesn't jump — neither was in my prompt.
+
+**Decision:** Edited ✏️ (three rounds)
+
+**Why**
+
+I specified the design myself rather than letting the agent choose, because
+the brief says visual decisions are the candidate's. The palette, card
+layout, and offline-banner treatment are mine; the agent implemented them.
+
+What running the app surfaced that reading the code did not:
+
+- **Signed zeros.** USD and SAR rendered `-0.00 -0.00%`. Correct arithmetic,
+  meaningless output.
+- **Green badge, negative number.** Semantically right — a falling USD/EGP
+  rate means EGP strengthened — but nothing on screen explained that. Added
+  an `EGP ↑ / ↓` label so the colour and the sign justify each other.
+- **A fix that broke a different currency.** The first zero-threshold used
+  the absolute delta, which is scale-dependent: JPY trades at 0.31 EGP, so a
+  real 0.21% move has an absolute delta of ~0.0007 and got suppressed as
+  "no change". Moved the threshold to the percentage.
+- **The same fix, twice, inconsistently.** It landed on the list card but not
+  the detail header. Consolidated into a single `ChangeBadge.isHidden`
+  static so both surfaces read the same rule.
+- **Decimal precision.** JPY's delta still showed `-0.00` against a correct
+  `-0.21%`, because the delta was hard-coded to two decimals. Now derived
+  from the rate's magnitude.
+
+The pattern across all five: each is a rendering decision that only shows up
+when you look at the screen. The code was correct every time.
