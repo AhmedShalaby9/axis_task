@@ -41,3 +41,26 @@ Four other gaps I sent back:
 - No DI container at all.
 
 Ran a second pass with these as explicit constraints.
+
+
+**Follow-up result**
+
+Second pass merged the data layer into a single `currency` feature with
+two page-scoped BLoCs, added a `get_it` DI container, moved the inversion
+into the repository's model→entity mapping, and made `NetworkInfo` expose
+a connectivity stream.
+
+I accepted the inversion placement — the reasoning was sound: the
+datasource should represent the API faithfully, and putting it in the
+mapper means one line changes if the API direction ever flips.
+
+Still sent back a third round on:
+- **Call count.** `GetDailyChange` took a single currency code, so the list
+  screen would have called it five times — 10 requests for data that fits
+  in 2. One response already contains all five currencies.
+- **Missing timestamps.** No entity carried a date or a cache/network
+  origin flag, but Module 2 requires "date of last update" and Module 3
+  requires a "last updated" indicator for offline data.
+- **Color semantics.** Green means EGP *strengthening*, so a falling
+  USD/EGP rate is green — the opposite of the usual convention. Left
+  unspecified, this would have been decided ad-hoc inside a widget.
