@@ -296,3 +296,41 @@ What running the app surfaced that reading the code did not:
 
 The pattern across all five: each is a rendering decision that only shows up
 when you look at the screen. The code was correct every time.
+
+
+
+---
+
+##  Tests
+
+**Prompt**
+
+> Write tests. Focus on the logic that would actually break, not coverage
+> numbers. [enumerated cases: exactly 2 repository calls, the inverted trend
+> convention, yesterday-fails degradation, refresh failure preserving state,
+> connectivity false→true vs true→true]
+
+**Returned**
+
+27 tests across the model, repository, use case, and BLoC. All passing.
+
+**Decision:** Accepted 
+
+**Why**
+
+I listed the cases myself rather than asking for "good coverage", because
+every one of them corresponds to a decision made earlier in this project
+that a later refactor could silently undo. `verify(...).called(2)` is the
+one I care about most — it's the difference between the 2-call design and
+the 10-call version I rejected at the architecture stage.
+
+Two things it added unprompted that I kept: `verifyNever` on the offline
+path, which proves no network call is *attempted* rather than merely that
+cache was served; and checking the connectivity controller's listener count
+after `close()`, rather than just asserting events stop arriving.
+
+It also deleted the default `widget_test.dart` rather than fixing it — a
+reasonable call since it referenced a scaffold class that no longer exists,
+but it left the project with no widget tests at all. Added one for
+`RateCard`, covering the badge-visibility rule that took three rounds to get
+right and had nothing guarding it.
