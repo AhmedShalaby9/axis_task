@@ -123,3 +123,42 @@ case in the presentation layer. It also handled `connectivity_plus` v6
 correctly — that version returns `List<ConnectivityResult>` rather than a
 single value, and a naive `!= ConnectivityResult.none` check would not have
 compiled.
+
+
+
+---
+
+## Domain layer
+
+**Prompt**
+
+> Implement the domain layer only. [entities, repository contract, two use cases]
+> Edge cases I want handled explicitly:
+> - Yesterday's request fails but today's succeeds — do not fail the whole
+    >   screen. Decide and justify what happens to the delta fields.
+> - A currency present today but missing yesterday.
+
+**Returned**
+
+Entities with delta fields defaulting to zero, repository contract, and
+`GetAllRatesWithChange` doing two calls with per-currency degradation:
+today's failure propagates, yesterday's does not.
+
+**Decision:** Edited 
+
+**Why**
+
+I put the edge cases in the prompt because the obvious implementation is
+`Left(Failure)` on any failed call — which would hide five valid rates
+because a supplementary comparison didn't resolve. It got that right, and
+degraded per-currency rather than all-or-nothing.
+
+What I sent back: it used `EgpTrend.unchanged` when yesterday's data was
+missing. That's a factual claim we can't make — we don't know the rate was
+unchanged, we know nothing. Both render grey, so the user can't distinguish
+"flat" from "no data". Added `EgpTrend.unknown`, and the widget hides the
+badge for it instead of showing a zero.
+
+The fix it produced was better than what I'd have written: it made the
+yesterday map nullable, so a total request failure and a single missing
+currency collapse into the same null check rather than two branches.
