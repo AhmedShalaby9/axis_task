@@ -207,3 +207,46 @@ Two things I challenged and it defended correctly:
 Also worth noting: it injected `http.Client` rather than constructing it
 internally, which I hadn't asked for. That's what makes the datasource
 testable without a live network.
+
+
+---
+
+##  BLoCs
+
+**Prompt**
+
+> Implement the presentation BLoCs only. No UI widgets yet.
+> [RatesListBloc with connectivity stream, CurrencyDetailBloc taking the
+> already-loaded ExchangeRate as a constructor arg]
+> Before you write the states, answer this: the user pulls to refresh while
+> 5 rates are already on screen, and the refresh fails. What state do you
+> emit, and what does the user see?
+
+**Returned**
+
+A single state class with a `status` enum rather than a sealed
+Initial/Loading/Loaded/Error hierarchy, plus derived getters
+(`isInitialLoading`, `isRefreshing`, `hasRates`). Failure emits preserve the
+existing rates list.
+
+**Decision:** Accepted 
+
+**Why**
+
+I asked the refresh-failure question because the default BLoC template —
+four sealed states — silently throws away loaded data on any failure. Five
+valid rates would vanish behind a full-screen error because a pull-to-refresh
+timed out. In an app with an explicit offline mode that's the wrong
+behaviour, and it's the kind of thing that only surfaces when you use the
+app rather than when you read the code.
+
+It identified the same problem and named the underlying reason: `loading`
+means two different things depending on whether data is already present.
+Full-screen spinner and inline refresh indicator are the same status with
+different context, which a sealed hierarchy can't express without
+duplicating the payload into every variant.
+
+One detail I'd have been likely to miss: `_previousConnectivity` starts null,
+so the connectivity stream's first emission is never treated as a
+restoration. Without that, entering the app offline-then-online would fire a
+spurious refresh on launch.
