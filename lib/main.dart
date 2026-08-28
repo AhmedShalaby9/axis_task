@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'core/di/injection_container.dart' as di;
+import 'core/theme/app_theme.dart';
+import 'features/currency/presentation/pages/rates_list_page.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,14 +15,11 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Axis Task',
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: Text('Axis Task — screens coming soon'),
-        ),
-      ),
+      theme: AppTheme.dark,
+      home: const RatesListPage(),
     );
   }
 }
