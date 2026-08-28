@@ -4,6 +4,7 @@
 - Claude Code — implementation and scaffolding
 
 **Approach**
+
 I used the coding agent for structure, and reviewed its
 output against the assessment requirements before accepting anything
 
@@ -18,6 +19,7 @@ output against the assessment requirements before accepting anything
 > Propose a clean architecture folder structure with BLoC...
 
 **Returned**
+
 A two-feature structure (`exchange_rates`, `rate_detail`), each with its
 own full data/domain/presentation stack. Exception/Failure split, abstract
 UseCase base, per-page BlocProvider scoping.
@@ -25,6 +27,7 @@ UseCase base, per-page BlocProvider scoping.
 **Decision:** Edited ✏️
 
 **Why**
+
 The exception/failure separation and the data-flow contract were sound and
 I kept them. But splitting into two features duplicated the data layer for
 no reason — both hit the same endpoint (`egp.json`) with the same model.
@@ -64,3 +67,26 @@ Still sent back a third round on:
 - **Color semantics.** Green means EGP *strengthening*, so a falling
   USD/EGP rate is green — the opposite of the usual convention. Left
   unspecified, this would have been decided ad-hoc inside a widget.
+
+
+---
+
+**Third round**
+
+Consolidated to a single `GetAllRatesWithChange` use case (NoParams, exactly
+2 requests, all 5 rates decorated with deltas), added `rateDate` and
+`DataOrigin` to the entity, and introduced an `EgpTrend` enum so the widget
+switches on a domain concept instead of doing sign arithmetic.
+
+**Decision:** Accepted
+
+I liked where it placed the two enums: `DataOrigin` in `core/` because
+cache-vs-network is infrastructure, `EgpTrend` in the currency domain because
+it only exists as a consequence of the inversion. That distinction wasn't in
+my prompt.
+
+Three rounds to get here. The first proposal looked correct in shape —
+proper layering, sensible naming — but the problems were all in the parts
+the spec constrains and a generic clean-architecture template doesn't:
+request count, timestamps, and an inverted color convention. Structure
+that reads well isn't the same as structure that fits the requirements.
